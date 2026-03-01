@@ -7,6 +7,7 @@ export const CharacterDossier = () => {
   const [url, setUrl] = useState(
     "https://rickandmortyapi.com/api/character/1/",
   );
+  
 
   const getCharacter = async () => {
     const result = await fetch(url);
@@ -23,13 +24,15 @@ export const CharacterDossier = () => {
     getCharacter();
   };
 
+ 
+
   return (
     <>
       <form onSubmit={submitHandler}>
         <div className="mb-3">
           <label className="form-label"> Enter Character Id </label>
           <input
-            type="text"
+            type="number"
             id="name"
             onChange={onSubmitId}
             className="form-control"
@@ -40,14 +43,14 @@ export const CharacterDossier = () => {
       </form>
 
       <h5 className="mt-3">Character Details</h5>
-      { (
+      {
         <Cards
           key={character.id}
           name={character.name}
           status={character.status}
           image={character.image}
         />
-      )}
+      }
     </>
   );
 };
